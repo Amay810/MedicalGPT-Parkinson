@@ -1,0 +1,25 @@
+#!/bin/bash
+#PBS -q normal                   
+#PBS -P personal                          
+#PBS -l select=1:ncpus=24:mem=60g:ngpus=1  
+#PBS -l walltime=24:00:00        
+#PBS -N Train_ParkinsonGPT       
+#PBS -o output_dpo.log           
+#PBS -e error_dpo.log            
+
+
+cd $PBS_O_WORKDIR
+
+
+module load miniforge3/25.3.1
+module load cuda/11.8.0
+
+
+source activate parkinson
+
+
+export HF_ENDPOINT=https://hf-mirror.com
+
+echo "=== Starting DPO Training ==="
+bash run_dpo.sh
+echo "=== DPO Training Finished ==="
