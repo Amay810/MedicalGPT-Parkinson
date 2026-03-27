@@ -1,0 +1,29 @@
+#!/bin/bash
+#PBS -q normal
+#PBS -P personal
+#PBS -l select=1:ncpus=24:mem=60g:ngpus=1
+#PBS -l walltime=24:00:00
+#PBS -N Infer_Base
+#PBS -o output_infer_base.log
+#PBS -e error_infer_base.log
+
+cd $PBS_O_WORKDIR
+
+module load miniforge3/25.3.1
+module load cuda/11.8.0
+
+source activate parkinson
+
+export TRANSFORMERS_OFFLINE=1
+export HF_HUB_OFFLINE=1
+export HF_DATASETS_OFFLINE=1
+
+echo "=== Starting Base Model Inference ==="
+
+CUDA_VISIBLE_DEVICES=0 python inference.py \
+    --base_model /home/users/ntu/s250045/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snapshots/7ae557604adf67be50417f59c2c2f167def9a775 \
+    --data_file questions.txt \
+    --output_file output_base.jsonl \
+    --max_new_tokens 512
+
+echo "=== Base Model Inference Finished ==="

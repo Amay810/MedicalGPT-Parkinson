@@ -24,7 +24,7 @@ CUDA_VISIBLE_DEVICES=0 torchrun --nproc_per_node 1 supervised_finetuning.py \
     --save_total_limit 3 \
     --gradient_accumulation_steps 4 \
     --preprocessing_num_workers 4 \
-    --output_dir outputs-sft-parkinson-v1 \
+    --output_dir outputs-sft-parkinson-v2 \
     --ddp_timeout 30000 \
     --logging_first_step True \
     --target_modules all \

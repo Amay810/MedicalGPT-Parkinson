@@ -365,8 +365,8 @@ def main():
             model_args.model_name_or_path,
             config=config,
             torch_dtype=torch_dtype,
-            load_in_4bit=model_args.load_in_4bit,
-            load_in_8bit=model_args.load_in_8bit,
+            # load_in_4bit=model_args.load_in_4bit,
+            # load_in_8bit=model_args.load_in_8bit,
             device_map=model_args.device_map,
             trust_remote_code=model_args.trust_remote_code,
         )

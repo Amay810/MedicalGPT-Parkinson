@@ -1,25 +1,24 @@
 CUDA_VISIBLE_DEVICES=0 python dpo_training.py \
     --model_name_or_path Qwen/Qwen2.5-0.5B-Instruct \
-    --peft_path outputs-sft-parkinson-v1 \
+    --peft_path outputs-sft-parkinson-v2 \
     --template_name qwen \
     --train_file_dir ./data/parkinson/dpo \
     --validation_split_percentage 10 \
     --per_device_train_batch_size 2 \
-    --gradient_accumulation_steps 8 \
+    --gradient_accumulation_steps 4 \
     --per_device_eval_batch_size 1 \
     --do_train \
     --do_eval \
     --use_peft True \
-    --max_train_samples 135 \
-    --max_eval_samples 15 \
-    --max_steps 15 \
-    --eval_steps 5 \
-    --save_steps 15 \
-    --warmup_steps 0 \
-    --learning_rate 5e-5 \
+    --max_steps 70 \
+    --eval_steps 10 \
+    --save_steps 10 \
+    --warmup_steps 10 \
+    --learning_rate 1e-5 \
+    --weight_decay 0.05 \
     --max_source_length 512 \
     --max_target_length 512 \
-    --output_dir outputs-dpo-parkinson-v4 \
+    --output_dir outputs-dpo-parkinson-v2 \
     --target_modules all \
     --lora_rank 8 \
     --lora_alpha 16 \
