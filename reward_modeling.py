@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-@author:XuMing(xuming624@qq.com)
 @description:
+
+Copyright 2023 XuMing(xuming624@qq.com) and The HuggingFace Inc. team.
+Adapted for Parkinson's disease domain by Amay, 2026.
+Modifications: dataset path, Qwen2.5-0.5B-Instruct, CoT format support.
 """
 
 import math
