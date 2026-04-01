@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-@author:XuMing(xuming624@qq.com)
+Adapted from MedicalGPT (https://github.com/shibing624/MedicalGPT)
 @description: Inference script
 """
 import argparse
