@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@author:XuMing(xuming624@qq.com)
 @description: Train a model from SFT using RLOO (REINFORCE Leave-One-Out, PPO alternative)
 
 Modified for MedicalGPT-Parkinson: fixed preprocess_function for prompt-only data.
