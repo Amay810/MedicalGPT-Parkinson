@@ -17,8 +17,6 @@
 """
 Fine-tuning the library models for causal language modeling (GPT, LLaMA, Bloom, ...) on a json file or a dataset.
 
-part of code is modified from https://github.com/shibing624/textgen
-
 """
 
 import math
