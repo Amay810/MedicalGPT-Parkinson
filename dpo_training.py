@@ -2,6 +2,8 @@
 """
 @author:XuMing(xuming624@qq.com)
 @description: Train a model from SFT using DPO
+# Adapted from MedicalGPT (https://github.com/shibing624/MedicalGPT)
+# Modifications: Adapted for Parkinson's disease domain, Qwen2.5-0.5B-Instruct
 """
 import os
 from copy import deepcopy
