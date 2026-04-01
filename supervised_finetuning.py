@@ -16,6 +16,8 @@
 Fine-tuning the library models for causal language modeling (GPT, LLaMA, Bloom, ...) on a json file or a dataset.
 
 part of code is modified from https://github.com/shibing624/textgen
+# Adapted from MedicalGPT (https://github.com/shibing624/MedicalGPT)
+# Modifications: Adapted for Parkinson's disease domain, Qwen2.5-0.5B-Instruct
 """
 
 import math
