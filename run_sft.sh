@@ -1,7 +1,7 @@
 CUDA_VISIBLE_DEVICES=0 torchrun --nproc_per_node 1 supervised_finetuning.py \
     --model_name_or_path Qwen/Qwen2.5-0.5B-Instruct \
-    --train_file_dir ./data/parkinson/sft \
-    --validation_file_dir ./data/parkinson/sft \
+    --train_file_dir ./data/sft \
+    --validation_file_dir ./data/sft \
     --per_device_train_batch_size 2 \
     --per_device_eval_batch_size 2 \
     --do_train \
