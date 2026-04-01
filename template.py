@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-@author:XuMing(xuming624@qq.com)
 @description: 
+Adapted from MedicalGPT (https://github.com/shibing624/MedicalGPT)
 """
 
 from dataclasses import dataclass
