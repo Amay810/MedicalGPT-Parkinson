@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 # Copyright 2023 XuMing(xuming624@qq.com) and The HuggingFace Inc. team. All rights reserved.
+# Adapted from MedicalGPT (https://github.com/shibing624/MedicalGPT)
+# Modifications: Adapted for Parkinson's disease domain, Qwen2.5-0.5B-Instruct
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +18,7 @@
 Fine-tuning the library models for causal language modeling (GPT, LLaMA, Bloom, ...) on a json file or a dataset.
 
 part of code is modified from https://github.com/shibing624/textgen
-# Adapted from MedicalGPT (https://github.com/shibing624/MedicalGPT)
-# Modifications: Adapted for Parkinson's disease domain, Qwen2.5-0.5B-Instruct
+
 """
 
 import math
