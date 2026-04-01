@@ -2,7 +2,7 @@ CUDA_VISIBLE_DEVICES=0 python dpo_training.py \
     --model_name_or_path Qwen/Qwen2.5-0.5B-Instruct \
     --peft_path outputs-sft-parkinson-v2 \
     --template_name qwen \
-    --train_file_dir ./data/parkinson/dpo \
+    --train_file_dir ./data/dpo \
     --validation_split_percentage 10 \
     --per_device_train_batch_size 2 \
     --gradient_accumulation_steps 4 \
