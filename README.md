@@ -187,7 +187,7 @@ export HF_ENDPOINT=https://hf-mirror.com
 @misc{ParkinsonGPT2025,
   title  = {ParkinsonGPT: Domain-Specific LLM Post-Training for Parkinson's Disease QA},
   year   = {2025},
-  note   = {\url{https://github.com/YOUR_USERNAME/MedicalGPT-Parkinson}}
+  note   = {\url{https://github.com/Amay810/MedicalGPT-Parkinson}}
 }
 ```
 
