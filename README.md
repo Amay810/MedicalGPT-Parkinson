@@ -210,20 +210,6 @@ export HF_ENDPOINT=https://hf-mirror.com
 
 ---
 
-## Key Engineering Decisions & Lessons
-
-| Issue | Root Cause | Fix |
-|-------|-----------|-----|
-| 74% false positives in vector filtering | Embedding full text captured response style, not topic | Embed question field only; use max similarity |
-| 150 contaminated DPO samples | Template variables not substituted in generation script | `Counter`-based detection + filter script |
-| Checkpoint recovery (183 samples) | `generate_one()` returned nested `{"dpo":..., "sft":...}`, `load_checkpoint()` expected flat `question` field | Unpack script, lossless recovery |
-| BOM encoding crash | PowerShell `Set-Content -Encoding UTF8` writes BOM → `json.loads` fails | Merge files with Python instead |
-| DPO length-shortcut bias | Rejected responses much shorter than chosen | Explicit length alignment in generation prompt |
-| SFT format inconsistency | Three coexisting formats: `{"human"}`, `{"gpt"}`, `{"value"}` | Normalize all to ShareGPT format |
-| RM+PPO joint training instability | OOM and scheduling conflicts on single A100 | Split into separate `run_rm.sh` + `run_ppo.sh` jobs |
-
----
-
 ## Citation
 
 ```bibtex
