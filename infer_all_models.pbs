@@ -1,0 +1,85 @@
+#!/bin/bash
+#PBS -q normal
+#PBS -P personal
+#PBS -l select=1:ncpus=8:ngpus=1:mem=32gb
+#PBS -l walltime=12:00:00
+#PBS -N Infer_AllModels
+#PBS -o output_infer_all.log
+#PBS -e error_infer_all.log
+
+cd $PBS_O_WORKDIR
+
+module load miniforge3/25.3.1
+module load cuda/11.8.0
+source activate parkinson
+
+export HF_ENDPOINT=https://hf-mirror.com
+
+DATA_FILE="./data/eval/parkinson_real_questions_v2.jsonl"
+MAX_TOKENS=1024
+
+# ==============================================================
+# To run a specific model, change "if false" to "if true"
+# for that block, then submit: qsub infer_all_models.pbs
+# Results are saved to data/eval/
+# ==============================================================
+
+# ── Stage 0: Base model ───────────────────────────────────────
+if false; then
+    export TRANSFORMERS_OFFLINE=1
+    export HF_HUB_OFFLINE=1
+    export HF_DATASETS_OFFLINE=1
+    echo "=== Base Model Inference ==="
+    python inference.py \
+        --base_model /home/users/ntu/s250045/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snapshots/7ae557604adf67be50417f59c2c2f167def9a775 \
+        --data_file ${DATA_FILE} \
+        --output_file ./data/eval/output_base.jsonl \
+        --max_new_tokens ${MAX_TOKENS}
+    echo "=== Base Model Done ==="
+fi
+
+# ── Stage 1: SFT model ────────────────────────────────────────
+if false; then
+    echo "=== SFT Model Inference ==="
+    python inference.py \
+        --base_model ./merged-sft-parkinson \
+        --data_file ${DATA_FILE} \
+        --output_file ./data/eval/output_sft.jsonl \
+        --max_new_tokens ${MAX_TOKENS}
+    echo "=== SFT Model Done ==="
+fi
+
+# ── Stage 2: DPO model ────────────────────────────────────────
+if false; then
+    echo "=== DPO Model Inference ==="
+    python inference.py \
+        --base_model ./merged-dpo-parkinson \
+        --data_file ${DATA_FILE} \
+        --output_file ./data/eval/output_dpo.jsonl \
+        --max_new_tokens ${MAX_TOKENS}
+    echo "=== DPO Model Done ==="
+fi
+
+# ── Stage 3A: GRPO model ──────────────────────────────────────
+if false; then
+    echo "=== GRPO Model Inference ==="
+    python inference.py \
+        --base_model ./merged-grpo-parkinson \
+        --data_file ${DATA_FILE} \
+        --output_file ./data/eval/output_grpo.jsonl \
+        --max_new_tokens ${MAX_TOKENS}
+    echo "=== GRPO Model Done ==="
+fi
+
+# ── Stage 3B: PPO model ───────────────────────────────────────
+if false; then
+    echo "=== PPO Model Inference ==="
+    python inference.py \
+        --base_model ./merged-ppo-parkinson \
+        --data_file ${DATA_FILE} \
+        --output_file ./data/eval/output_ppo.jsonl \
+        --max_new_tokens ${MAX_TOKENS}
+    echo "=== PPO Model Done ==="
+fi
+
+echo "=== Inference job finished ==="
